@@ -1,0 +1,21 @@
+.home-bg {
+  background: url("https://images.unsplash.com/photo-1587380574726-83b0f5c41e8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.home-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.text-white {
+  color: white !important;
+}
