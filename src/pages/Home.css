@@ -1,21 +1,104 @@
-.home-bg {
-  background: url("https://images.unsplash.com/photo-1587380574726-83b0f5c41e8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
-  background-size: cover;
+/* styles/Home.css */
+
+.star-wars-logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
 }
 
-.home-btn {
-  padding: 1rem 2rem;
+.star-wars-logo-small {
+  width: 120px;
+  filter: drop-shadow(0 0 6px yellow);
+  cursor: pointer;
+}
+
+.intro-text {
+  text-align: center;
   font-size: 1.5rem;
-  border-radius: 1rem;
+  color: white;
+  margin-top: 100px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.crawl-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 250px;
+  margin-top: 40px;
+}
+
+.crawl {
+  color: #ffe81f;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.8;
+  animation: scrollCrawl 30s linear infinite;
+}
+
+.crawl .title h1 {
+  margin-top: 10px;
+  font-size: 2rem;
   font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
 }
 
-.home-btn:hover {
+@keyframes scrollCrawl {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.cinematic-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+}
+
+.cinematic-card {
+  width: 300px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  transition: transform 0.3s ease;
+  border-bottom: 5px solid #d4af37;
+}
+
+.cinematic-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-.text-white {
-  color: white !important;
+.card-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 2px solid #d4af37;
+}
+
+.card-overlay {
+  padding: 20px;
+  color: white;
+  background-color: #121212;
+  text-align: left;
+}
+
+.card-overlay h4 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #d4af37;
+}
+
+.card-overlay p {
+  font-size: 0.95rem;
+  opacity: 0.8;
 }
