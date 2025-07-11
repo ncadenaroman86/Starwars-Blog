@@ -1,82 +1,20 @@
-// Planets.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import ItemCard from "../components/ItemCard";
 import "../styles/Home.css";
 
-export default function Planets() {
-  const [planets, setPlanets] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    fetch("https://www.swapi.tech/api/planets")
-      .then((res) => res.json())
-      .then((data) => {
-        const fetches = data.results.map((item) =>
-          fetch(item.url)
-            .then((res) => res.json())
-            .then((resData) => ({
-              ...resData.result.properties,
-              uid: item.uid
-            }))
-        );
-        Promise.all(fetches).then(setPlanets);
-      });
-  }, []);
-
-  const toggleFavorite = (item) => {
-    setFavorites((prev) =>
-      prev.find((fav) => fav.uid === item.uid)
-        ? prev.filter((fav) => fav.uid !== item.uid)
-        : [...prev, item]
-    );
-  };
-
+export default function People() {
   return (
-    <div
-      style={{
-        backgroundColor: "black",
-        color: "white",
-        minHeight: "100vh",
-        backgroundImage:
-          "url('https://gizmodo.com/app/uploads/2019/09/stosypjwlnzuowss8kt6.gif')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
-      }}
-    >
-      <div className="star-wars-logo-container">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
-          alt="Star Wars"
-          className="star-wars-logo-small"
-          onClick={() => (window.location.href = "/")}
+    <>
+      <Navbar />
+      <h1 style={{ color: "white", textAlign: "center" }}>Star Wars Characters</h1>
+      <div className="cinematic-card-grid">
+        <ItemCard
+          title="Luke Skywalker"
+          subtitle="Jedi Knight"
+          image="https://i.pinimg.com/originals/b2/a9/f1/b2a9f18ff56bc522129f61f8bdb05720.gif"
         />
       </div>
-
-      <div className="container mt-5">
-        <h2 className="text-success text-center mb-4">Planets</h2>
-        <div className="text-center mb-4">
-          <button
-            className="btn btn-warning"
-            onClick={() => console.log("Favorites:", favorites)}
-          >
-            View Favorites ({favorites.length})
-          </button>
-        </div>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-          {planets.map((planet, i) => (
-            <div className="col" key={i}>
-              <ItemCard
-                item={planet}
-                type="planets"
-                isFavorite={favorites.some((fav) => fav.uid === planet.uid)}
-                toggleFavorite={() => toggleFavorite(planet)}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
